@@ -5,7 +5,9 @@ interface props {
 
 const { title } = Astro.props;
 
-import '../styles/global.css'; 
+import "../styles/global.css";
+
+
 ---
 
 <html lang="en">
@@ -18,8 +20,8 @@ import '../styles/global.css';
 		<title>{title}</title>
 	</head>
 	    <body class="bg-slate-800 text-slate-100 m-auto max-w-3xl">
-
-    <slot />
-		
+			<main class="mt-10">
+			<slot />
+		    </main>
 	</body>
 </html>

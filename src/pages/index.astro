@@ -1,8 +1,27 @@
 ---
-import MainLayoutAstroComponent, { MainLayout } from "../layouts/MainLayout.astro";
 
-const title = "pokemon static | home"
+import type {PokemonListResponse} from '../interfaces/interfaces/pokemon-list.respond'
+
+import MainLayout from '../layouts/MainLayout.astro';
+
+const resp = await fetch('https://pokeapi.co/api/v2/pokemon');
+const data = await resp.json(); 
+
+console.log(data)
+
+const title = "pokemon static | home";
+
 ---
-<mainLayout title="{title}">
-<h1 class="text 3xl text-blue-500">Astro</h1>
-</mainLayout>
+
+<MainLayout title={title}>
+  <h1 class="text-3xl">Listado de Pokémones</h1>
+  <hr / >
+  <ul>
+    {
+      data.results.map((pokemon: any) => (
+        <li>{pokemon.name}</li>
+      ))
+    }
+  </ul>
+</MainLayout>
+

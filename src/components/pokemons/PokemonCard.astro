@@ -12,8 +12,10 @@ const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprit
 
 ---
 
-<div class="rounded border flex flex-col justify-center p-2">
+<a 
+href={`/pokemons/${name}`}
+class="rounded border flex flex-col justify-center p-2">
      <img src={imageSrc} alt={ name }/>
-     <span>{name}</span>
+     <span class="capitalize">{name}</span>
   
-</div>
+</a>

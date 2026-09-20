@@ -1,11 +1,17 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { siteInfo } from 'src/consts/site-info';
 
 interface props {
-    title: string;
+    title?: string;
+	image?: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { title = siteInfo.title, 
+	description = siteInfo.desciption,
+	image
+	} = Astro.props;
 
 import "../styles/global.css";
 
@@ -19,6 +25,17 @@ import "../styles/global.css";
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+
+
+		<meta name="description" content={description}/>
+		<meta name="author" content={'Scarlett Orozco'}/>
+
+		<meta property="od:title" content={title}/>
+		<meta property="od:description" content={description}/>
+		<meta property="od:image" content={image}/>
+
+
+
 		<title>{title}</title>
 
 		<ClientRouter />

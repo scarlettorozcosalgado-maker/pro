@@ -1,10 +1,13 @@
 ---
 import type { GetStaticPaths } from "astro";
-import type { PokemonListResponse } from "../../interfaces/interfaces/pokemon-list.respond";
+import type { PokemonListResponse } from "@interfaces/interfaces/pokemon-list.respond";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { astro } from "astro/fetch";
-import PokemonCard from "../../components/pokemons/PokemonCard.astro";
 
+
+/* import PokemonCard from 'src/components/pokemons/PokemonCard.astro'; */
+
+import PokemonCard from '@components/pokemons/PokemonCard.astro';
 export const getStaticPaths = (async() => {
 
     const resp = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');

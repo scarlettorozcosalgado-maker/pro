@@ -4,6 +4,7 @@ import PokemonCard from "../../components/pokemons/PokemonCard.astro";
 import type { PokemonListResponse } from "../../interfaces/interfaces/pokemon-list.respond";
 
 import MainLayout from "../../layouts/MainLayout.astro";
+import { url } from "astro:schema";
 
 
 
@@ -38,10 +39,35 @@ const { page } = Astro.props;
   <section
   class="flex mt-10 gap-2 items-center"
   >
-  <a href={page.url.prev} class="bg-blue-500 p-2 text-white rounded-md">Anteriores</a>
-  <a href={page.url.next} class="bg-blue-500 p-2 text-white rounded-md">Siguientes</a>
+  <a 
+  class:list={
+    ["btn", {
+      disabled: !page.url.prev
+    }
+  
+  ]} 
+  href={page.url.prev}>Anteriores</a>
+
+  <a  class:list={
+    ["btn", {
+      disabled: !page.url.next
+    }
+  
+  ]}  href={page.url.next}>Siguientes</a>
   <div class="flex flex-1"></div>
-  <span>Pagina 1</span>
+  <span class="text-xl font-bold">Pagina {page.currentPage}</span>
 
   </section>
 </MainLayout>
+
+<style>
+  @import "tailwindcss";
+
+  .btn {
+    @apply bg-blue-500 p-2 text-white rounded-md;
+  }
+  .disabled {
+    @apply bg-gray-600 text-gray-400 pointer-events-none;
+  }
+</style>
+

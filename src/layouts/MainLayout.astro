@@ -1,7 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import { siteInfo } from 'src/consts/site-info';
-
 interface props {
     title?: string;
 	image?: string;
@@ -14,6 +13,7 @@ const { title = siteInfo.title,
 	} = Astro.props;
 
 import "../styles/global.css";
+import NavBar from '@components/shared/NavBar.astro';
 
 
 ---
@@ -48,7 +48,8 @@ import "../styles/global.css";
  -->
 	</head>
 	    <body class="bg-slate-800 text-slate-100 m-auto max-w-3xl">
-			<main class="mt-10" transition:animate="fade">
+			<NavBar/>
+			<main class="mt-10 m-auto max-w-3xl">
 			<slot />
 		    </main>
 	</body>

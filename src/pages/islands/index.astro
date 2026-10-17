@@ -3,22 +3,34 @@ import MainLayout from "@layouts/MainLayout.astro";
 import Title from "@components/shared/Title.astro";
 import { Counter } from "@components/counter";
 
-
+const counterValue = 20;
 ---
 
 <MainLayout title="favoritos">
-<Title>Favoritos</Title>
+  <Title>Favoritos</Title>
 
-<div
-  style={{
-    height: '2000px',
-    backgroundColor: 'red',
-    opacity: 0.4,
-  }}
->
-</div>
-<!-- 
-<Counter client:only="solid.js"/> -->
+  <video controls="" autoplay="" transition:persist>
+    <source
+      src="https://archive.org"
+      type="video/mp4"
+    />
+  </video>
 
-<Counter client:visible/>
+  <div
+    style={{
+      height: '2000px',
+      backgroundColor: 'red',
+      opacity: 0.4,
+    }}
+  >
+  </div>
+
+  <Counter
+    {...{ "transition:persist": "counter", "transition:persist-props": true }}
+    client:visible
+    initValue={counterValue}
+  />
+
+  <Title>Counter island</Title>
 </MainLayout>
+

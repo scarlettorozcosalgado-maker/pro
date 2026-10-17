@@ -1,25 +1,31 @@
-import { createSignal } from 'solid-js';
+import { createSignal, type JSX } from 'solid-js';
 
-export const Counter = () => {
-    const [counter, setCounter] = createSignal(10);
+interface Props {
+  initValue: number;
+  children?: JSX.Element;
+}
 
-    return (
-        <>
-            <h1 class="text-4xl">Counter</h1>
-            <h3 class="text-xl">Value: {counter()}</h3>
+export const Counter = (props: Props) => {
+  const [counter, setCounter] = createSignal(props.initValue);
 
-            <button
-                onClick={() => setCounter((prev) => prev + 1)}
-                class="bg-blue-500 p-2 mr-2 rounded text-white"
-            >
-                +1
-            </button>
-            <button
-                onClick={() => setCounter((prev) => prev - 1)}
-                class="bg-blue-500 p-2 mr-2 rounded text-white"
-            >
-                -1
-            </button>
-        </>
-    );
+  return (
+    <>
+      {props.children}
+      <h3 class="text-xl">Value: {counter()}</h3>
+
+      <button
+        onClick={() => setCounter((prev) => prev + 1)}
+        class="bg-blue-500 p-2 mr-2 rounded text-white"
+      >
+        +1
+      </button>
+      <button
+        onClick={() => setCounter((prev) => prev - 1)}
+        class="bg-blue-500 p-2 mr-2 rounded text-white"
+      >
+        -1
+      </button>
+    </>
+  );
 };
+
